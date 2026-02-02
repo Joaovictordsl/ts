@@ -5,28 +5,27 @@ import { ProfilesService } from './profiles.service';
 
 @Controller('profiles')
 export class ProfilesController {
-
     constructor(private profileService: ProfilesService){
-        // this.profileService = profileService;
     }
+
 
     @Get()
     findAll(){
         return this.profileService.findAll();
     }
 
+
     @Get(':id')
     findOne(@Param('id') id: string){
         return this.profileService.findOne(id);
     }
 
+
     @Post()
     createProfile(@Body() createProfileDto: CreateProfileDto){
-        return {
-            name: createProfileDto.name,
-            description: createProfileDto.description
-        }
+        return this.profileService.createProfile(createProfileDto);
     }
+
 
     @Put(':id')
     update(@Param('id') id: string, @Body() updateProfileDto: UpdateProfileDto){
@@ -37,6 +36,7 @@ export class ProfilesController {
         }
     }
 
+    
     @Delete(':id')
     @HttpCode(HttpStatus.NO_CONTENT)
     remove(@Param('id') id: string){

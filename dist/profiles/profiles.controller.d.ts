@@ -15,6 +15,7 @@ export declare class ProfilesController {
         description: string;
     } | undefined;
     createProfile(createProfileDto: CreateProfileDto): {
+        id: `${string}-${string}-${string}-${string}-${string}`;
         name: string;
         description: string;
     };

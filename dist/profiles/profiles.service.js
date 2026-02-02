@@ -35,6 +35,17 @@ let ProfilesService = class ProfilesService {
         let profile = profiles.find(obj => obj.id === id);
         return profile;
     }
+    createProfile(createProfileDto) {
+        const newProfile = {
+            id: (0, crypto_1.randomUUID)(),
+            name: createProfileDto.name,
+            description: createProfileDto.description
+        };
+        this.profiles.push(newProfile);
+        return newProfile;
+    }
+    update() {
+    }
 };
 exports.ProfilesService = ProfilesService;
 exports.ProfilesService = ProfilesService = __decorate([
