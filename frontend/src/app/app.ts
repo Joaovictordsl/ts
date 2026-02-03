@@ -25,6 +25,16 @@ export class App implements OnInit {
     this.profiles.set(data); // Atualiza o signal com os perfis do banco
   }
 
+
+  // async remove() {
+  //   const resp = await fetch('http://localhost:3000/profiles', {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify(body)
+  //   });
+
+  // };
+
  
   async createProfile() {
   // Use os parênteses para pegar o VALOR do signal
