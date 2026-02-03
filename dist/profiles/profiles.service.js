@@ -31,9 +31,11 @@ let ProfilesService = class ProfilesService {
         return this.profiles;
     }
     findOne(id) {
-        let profiles = this.profiles;
-        let profile = profiles.find(obj => obj.id === id);
-        return profile;
+        const matchingProfile = this.profiles.find(obj => obj.id === id);
+        if (!matchingProfile) {
+            throw new common_1.NotFoundException(`Profile with ID: ${id} not found.`);
+        }
+        return matchingProfile;
     }
     createProfile(createProfileDto) {
         const newProfile = {
@@ -56,6 +58,12 @@ let ProfilesService = class ProfilesService {
         };
         this.profiles[index] = updatedProfile;
         return updatedProfile;
+    }
+    remove(id) {
+        let index = this.profiles.findIndex(profile => profile.id === id);
+        if (index !== -1) {
+            this.profiles.splice(index, 1);
+        }
     }
 };
 exports.ProfilesService = ProfilesService;

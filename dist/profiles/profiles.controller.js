@@ -35,6 +35,7 @@ let ProfilesController = class ProfilesController {
         return this.profileService.update(id, updateProfileDto);
     }
     remove(id) {
+        return this.profileService.remove(id);
     }
 };
 exports.ProfilesController = ProfilesController;

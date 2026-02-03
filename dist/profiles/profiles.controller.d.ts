@@ -13,7 +13,7 @@ export declare class ProfilesController {
         id: `${string}-${string}-${string}-${string}-${string}`;
         name: string;
         description: string;
-    } | undefined;
+    };
     createProfile(createProfileDto: CreateProfileDto): {
         id: `${string}-${string}-${string}-${string}-${string}`;
         name: string;

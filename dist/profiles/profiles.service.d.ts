@@ -11,11 +11,12 @@ export declare class ProfilesService {
         id: `${string}-${string}-${string}-${string}-${string}`;
         name: string;
         description: string;
-    } | undefined;
+    };
     createProfile(createProfileDto: CreateProfileDto): {
         id: `${string}-${string}-${string}-${string}-${string}`;
         name: string;
         description: string;
     };
     update(id: string, updateProfileDto: UpdateProfileDto): {};
+    remove(id: string): void;
 }
