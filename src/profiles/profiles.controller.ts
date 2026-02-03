@@ -10,36 +10,30 @@ export class ProfilesController {
     constructor(private profileService: ProfilesService){
     }
 
-
     @Get()
     findAll(){
         return this.profileService.findAll();
     }
-
 
     @Get(':id')
     findOne(@Param('id', ParseUUIDPipe) id: UUID){
         return this.profileService.findOne(id);
     }
 
-
     @Post()
     createProfile(@Body() createProfileDto: CreateProfileDto){
         return this.profileService.createProfile(createProfileDto);
     }
  
-
     @Put(':id')
     update(@Param('id', ParseUUIDPipe) id: UUID, @Body() updateProfileDto: UpdateProfileDto){
         return this.profileService.update(id, updateProfileDto);
     }
 
-    
     @Delete(':id')
     @UseGuards(ProfilesGuard)
     @HttpCode(HttpStatus.NO_CONTENT)
     remove(@Param('id', ParseUUIDPipe) id: UUID){
         return this.profileService.remove(id);
     }
-
 }
