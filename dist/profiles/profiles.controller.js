@@ -29,8 +29,8 @@ let ProfilesController = class ProfilesController {
     findOne(id) {
         return this.profileService.findOne(id);
     }
-    createProfile(createProfileDto) {
-        return this.profileService.createProfile(createProfileDto);
+    create(createProfileDto) {
+        return this.profileService.create(createProfileDto);
     }
     update(id, updateProfileDto) {
         return this.profileService.update(id, updateProfileDto);
@@ -59,7 +59,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_profile_dto_1.CreateProfileDto]),
     __metadata("design:returntype", void 0)
-], ProfilesController.prototype, "createProfile", null);
+], ProfilesController.prototype, "create", null);
 __decorate([
     (0, common_1.Put)(':id'),
     __param(0, (0, common_1.Param)('id', common_1.ParseUUIDPipe)),

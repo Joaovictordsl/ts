@@ -10,10 +10,13 @@ export class ProfilesController {
     constructor(private profileService: ProfilesService){
     }
 
+
     @Get()
     findAll(){
         return this.profileService.findAll();
     }
+
+
 
     @Get(':id')
     findOne(@Param('id', ParseUUIDPipe) id: UUID){
@@ -21,8 +24,8 @@ export class ProfilesController {
     }
 
     @Post()
-    createProfile(@Body() createProfileDto: CreateProfileDto){
-        return this.profileService.createProfile(createProfileDto);
+    create(@Body() createProfileDto: CreateProfileDto){
+        return this.profileService.create(createProfileDto);
     }
  
     @Put(':id')

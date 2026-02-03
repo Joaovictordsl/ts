@@ -1,17 +1,25 @@
 import { CreateProfileDto } from './dto/create-profile.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
+import { PrismaService } from 'src/prisma/prisma.service';
 export declare class ProfilesService {
+    private prisma;
+    constructor(prisma: PrismaService);
     private profiles;
-    findAll(): {
-        id: `${string}-${string}-${string}-${string}-${string}`;
+    create(data: CreateProfileDto): Promise<{
+        id: string;
         name: string;
         description: string;
-    }[];
-    findOne(id: string): {
-        id: `${string}-${string}-${string}-${string}-${string}`;
+    }>;
+    findAll(): Promise<{
+        id: string;
         name: string;
         description: string;
-    };
+    }[]>;
+    findOne(id: string): Promise<{
+        id: string;
+        name: string;
+        description: string;
+    }>;
     createProfile(createProfileDto: CreateProfileDto): {
         id: `${string}-${string}-${string}-${string}-${string}`;
         name: string;

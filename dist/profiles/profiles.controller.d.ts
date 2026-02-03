@@ -5,21 +5,21 @@ import type { UUID } from 'crypto';
 export declare class ProfilesController {
     private profileService;
     constructor(profileService: ProfilesService);
-    findAll(): {
-        id: `${string}-${string}-${string}-${string}-${string}`;
+    findAll(): Promise<{
+        id: string;
         name: string;
         description: string;
-    }[];
-    findOne(id: UUID): {
-        id: `${string}-${string}-${string}-${string}-${string}`;
+    }[]>;
+    findOne(id: UUID): Promise<{
+        id: string;
         name: string;
         description: string;
-    };
-    createProfile(createProfileDto: CreateProfileDto): {
-        id: `${string}-${string}-${string}-${string}-${string}`;
+    }>;
+    create(createProfileDto: CreateProfileDto): Promise<{
+        id: string;
         name: string;
         description: string;
-    };
+    }>;
     update(id: UUID, updateProfileDto: UpdateProfileDto): {
         id: `${string}-${string}-${string}-${string}-${string}`;
         name: string;

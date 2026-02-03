@@ -2,9 +2,14 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { randomUUID } from 'crypto';
 import { CreateProfileDto } from './dto/create-profile.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
+import { PrismaService } from 'src/prisma/prisma.service';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class ProfilesService {
+
+    constructor(private prisma: PrismaService){}
+
     private profiles = [
         {
             id: randomUUID(),
@@ -23,19 +28,48 @@ export class ProfilesService {
         }
     ]
 
-    findAll(){
-        return this.profiles;
+    // findAll(){
+    //     return this.profiles;
+    // }
+
+    // findOne(id: string){
+
+    //     const matchingProfile = this.profiles.find(obj => obj.id === id);
+        
+    //     if (!matchingProfile){
+    //         throw new NotFoundException(`Profile with ID: ${id} not found.`)
+    //     }
+    //     return matchingProfile;
+    // }
+
+    // PRISMA
+    async create(data: CreateProfileDto) {
+        return this.prisma.profile.create({
+            data, 
+        });
+  }
+
+    async findAll() {
+        return this.prisma.profile.findMany();
     }
 
-    findOne(id: string){
+    async findOne(id: string){
 
-        const matchingProfile = this.profiles.find(obj => obj.id === id);
-        
-        if (!matchingProfile){
-            throw new NotFoundException(`Profile with ID: ${id} not found.`)
+        const matchingProfile = await this.prisma.profile.findUnique({
+            where: {id: id},
+        });
+
+        if(!matchingProfile){
+            throw new NotFoundException(`Profile with ID ${id} not found`);
         }
+
         return matchingProfile;
     }
+
+    //PRISMA
+
+
+
 
     createProfile(createProfileDto: CreateProfileDto){
 
