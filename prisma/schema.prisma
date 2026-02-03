@@ -1,0 +1,14 @@
+datasource db {
+  provider = "postgresql"
+  // A linha 'url = env(...)' deve ser removida daqui na v7
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Profile {
+  id    String @id @default(uuid())
+  name  String
+  description String?
+}
