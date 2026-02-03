@@ -1,0 +1,23 @@
+<div class="main-container">
+  <header>
+    <h1>✨ Perfil Manager</h1>
+    <p>Gerencie seus contatos com NestJS & Angular</p>
+  </header>
+
+  <section class="form-card">
+    <h3>Novo Perfil</h3>
+    <div class="input-group">
+      <input [ngModel]="newName()" (ngModelChange)="newName.set($event)" placeholder="Nome Completo" />
+      <textarea [ngModel]="description()" (ngModelChange)="description.set($event)" placeholder="Descrição ou Bio..."></textarea>
+      <button (click)="createProfile()">Criar Perfil</button>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="profile-card" *ngFor="let p of profiles()">
+      <div class="avatar">{{ p.name[0] }}</div>
+      <h4>{{ p.name }}</h4>
+      <p>{{ p.description }}</p>
+    </div>
+  </section>
+</div>
