@@ -47,23 +47,20 @@ let ProfilesService = class ProfilesService {
         return newProfile;
     }
     update(id, updateProfileDto) {
-        let index = this.profiles.findIndex(index => index.id === id);
-        if (!index) {
-            return {};
+        let matchingProfile = this.profiles.find(profile => profile.id === id);
+        if (!matchingProfile) {
+            throw new common_1.NotFoundException(`Profile with ID: ${id} not found.`);
         }
-        const updatedProfile = {
-            ...this.profiles[index],
-            name: updateProfileDto.name,
-            description: updateProfileDto.description,
-        };
-        this.profiles[index] = updatedProfile;
-        return updatedProfile;
+        matchingProfile.name = updateProfileDto.name;
+        matchingProfile.description = updateProfileDto.description;
+        return matchingProfile;
     }
     remove(id) {
         let index = this.profiles.findIndex(profile => profile.id === id);
-        if (index !== -1) {
-            this.profiles.splice(index, 1);
+        if (index === -1) {
+            throw new common_1.NotFoundException(`Profile with ID: ${id} not found.`);
         }
+        this.profiles.splice(index, 1);
     }
 };
 exports.ProfilesService = ProfilesService;

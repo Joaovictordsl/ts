@@ -17,6 +17,10 @@ export declare class ProfilesService {
         name: string;
         description: string;
     };
-    update(id: string, updateProfileDto: UpdateProfileDto): {};
+    update(id: string, updateProfileDto: UpdateProfileDto): {
+        id: `${string}-${string}-${string}-${string}-${string}`;
+        name: string;
+        description: string;
+    };
     remove(id: string): void;
 }
