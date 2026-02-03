@@ -44,7 +44,18 @@ let ProfilesService = class ProfilesService {
         this.profiles.push(newProfile);
         return newProfile;
     }
-    update() {
+    update(id, updateProfileDto) {
+        let index = this.profiles.findIndex(index => index.id === id);
+        if (!index) {
+            return {};
+        }
+        const updatedProfile = {
+            ...this.profiles[index],
+            name: updateProfileDto.name,
+            description: updateProfileDto.description,
+        };
+        this.profiles[index] = updatedProfile;
+        return updatedProfile;
     }
 };
 exports.ProfilesService = ProfilesService;

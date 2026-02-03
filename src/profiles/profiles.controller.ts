@@ -29,11 +29,7 @@ export class ProfilesController {
 
     @Put(':id')
     update(@Param('id') id: string, @Body() updateProfileDto: UpdateProfileDto){
-        return {
-            id,
-            name: updateProfileDto.name,
-            description: updateProfileDto.description
-        }
+        return this.profileService.update(id, updateProfileDto);
     }
 
     

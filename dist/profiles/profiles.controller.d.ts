@@ -19,10 +19,6 @@ export declare class ProfilesController {
         name: string;
         description: string;
     };
-    update(id: string, updateProfileDto: UpdateProfileDto): {
-        id: string;
-        name: string;
-        description: string;
-    };
+    update(id: string, updateProfileDto: UpdateProfileDto): {};
     remove(id: string): void;
 }

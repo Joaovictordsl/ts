@@ -1,4 +1,5 @@
 import { CreateProfileDto } from './dto/create-profile.dto';
+import { UpdateProfileDto } from './dto/update-profile.dto';
 export declare class ProfilesService {
     private profiles;
     findAll(): {
@@ -16,5 +17,5 @@ export declare class ProfilesService {
         name: string;
         description: string;
     };
-    update(): void;
+    update(id: string, updateProfileDto: UpdateProfileDto): {};
 }
